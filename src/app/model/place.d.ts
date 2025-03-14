@@ -1,4 +1,4 @@
 type Place = {
   id: number,
-  numero: number
+  numero: string
 }

@@ -1,10 +1,13 @@
 import {Component, inject} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
+import {PlaceComponent} from '../place/place.component';
 
 @Component({
   selector: 'app-accueil',
-  imports: [],
+  imports: [
+    PlaceComponent
+  ],
   templateUrl: './accueil.component.html',
   styleUrl: './accueil.component.scss'
 })

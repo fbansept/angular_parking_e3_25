@@ -3,7 +3,10 @@
 <div class="rangee">
 
 @for(place of listePlace; track $index) {
-  <div class="place" (click)="onClickPlace(place)" >{{ place.numero }}</div>
+  <app-place
+    [numero]="place.numero"
+    (click)="onClickPlace(place)">
+  </app-place>
 }
 
 </div>
