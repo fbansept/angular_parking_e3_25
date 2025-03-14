@@ -12,11 +12,11 @@ import {ConnexionService} from './connexion.service';
 export class AppComponent {
 
   connexionService = inject(ConnexionService)
+  utilisateurConnecte : Utilisateur | null = null
 
   ngOnInit() {
     this.connexionService.utilisateurConnecte.subscribe(
-      utilisateur => console.log(utilisateur)
+      utilisateur => this.utilisateurConnecte = utilisateur
     )
   }
-
 }

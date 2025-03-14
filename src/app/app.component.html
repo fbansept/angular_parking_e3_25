@@ -10,9 +10,11 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/accueil" routerLinkActive="lien-actif">Accueil</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/connexion" routerLinkActive="lien-actif">Connexion</a>
-        </li>
+        @if(utilisateurConnecte == null) {
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/connexion" routerLinkActive="lien-actif">Connexion</a>
+          </li>
+        }
       </ul>
       <form role="search">
         <input class="form-control" type="search" placeholder="Search" aria-label="Search">
