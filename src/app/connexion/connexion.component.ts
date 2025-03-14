@@ -5,6 +5,7 @@ import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angula
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {ConnexionService} from '../connexion.service';
 
 @Component({
   selector: 'app-connexion',
@@ -19,7 +20,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class ConnexionComponent {
 
-  http = inject(HttpClient)
+  connexionService = inject(ConnexionService)
   formBuilder = inject(FormBuilder)
   router = inject(Router)
   notification = inject(MatSnackBar)
@@ -36,10 +37,9 @@ export class ConnexionComponent {
 
       const utilisateur = this.formulaire.value
 
-      this.http.post(
-            "http://localhost:8080/connexion", utilisateur, {responseType: "text"})
+      this.connexionService
+        .connexion(utilisateur)
         .subscribe(jwt => {
-          localStorage.setItem("jwt", jwt)
           this.notification.open("Vous êtes connecté","",{
             duration : 5000,
             verticalPosition : "top"
