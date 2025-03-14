@@ -1,0 +1,9 @@
+<h1>Places disponibles</h1>
+
+<div class="rangee">
+
+@for(place of listePlace; track $index) {
+  <div class="place" (click)="onClickPlace(place)" >{{ place.numero }}</div>
+}
+
+</div>
