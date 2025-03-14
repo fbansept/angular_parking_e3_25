@@ -3,10 +3,15 @@
 <div class="rangee">
 
 @for(place of listePlace; track $index) {
-  <app-place
-    [numero]="place.numero"
-    (click)="onClickPlace(place)">
-  </app-place>
+  <div class="place-container">
+    <app-place
+      [numero]="place.numero"
+      (click)="onClickPlace(place)">
+    </app-place>
+    @if (utilisateurConnecte?.role == "ADMIN") {
+      <button mat-raised-button>Supprimer</button>
+    }
+  </div>
 }
 
 </div>

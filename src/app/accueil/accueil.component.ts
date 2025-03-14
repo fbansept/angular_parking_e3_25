@@ -2,11 +2,14 @@ import {Component, inject} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {PlaceComponent} from '../place/place.component';
+import {MatButton} from '@angular/material/button';
+import {ConnexionService} from '../connexion.service';
 
 @Component({
   selector: 'app-accueil',
   imports: [
-    PlaceComponent
+    PlaceComponent,
+    MatButton
   ],
   templateUrl: './accueil.component.html',
   styleUrl: './accueil.component.scss'
@@ -15,10 +18,15 @@ export class AccueilComponent {
 
   http= inject(HttpClient)
   router= inject(Router)
-
   listePlace: Place[] = []
+  connexionService = inject(ConnexionService)
+  utilisateurConnecte : Utilisateur | null = null
 
   ngOnInit() {
+    this.connexionService.utilisateurConnecte.subscribe(
+      utilisateur => this.utilisateurConnecte = utilisateur
+    )
+
     this.http.get<Place[]>("http://localhost:8080/places")
       .subscribe(listePlace => this.listePlace = listePlace)
 
